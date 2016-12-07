@@ -26,5 +26,12 @@
       "searchStrings":[
          "CoinMine"
       ]
+   },
+   {
+      "poolName":"Cryptopia",      
+      "url":"https://www.cryptopia.co.nz/Mineshaft?pool=GRS&Algo=Groestl",      
+      "searchStrings":[         
+         "CryptopiaStratum"      
+      ]   
    }
 ]
