@@ -20,6 +20,13 @@
          "mph"
       ]
    },
+   {      
+      "poolName":"Zpool.ca",      
+      "url":"https://www.zpool.ca",      
+      "searchStrings":[         
+         "www.zpool.ca"      
+      ]   
+   },
    {
       "poolName":"Coinmine.pl",
       "url":"https://www2.coinmine.pl/grs/",
