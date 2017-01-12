@@ -20,12 +20,12 @@
          "mph"
       ]
    },
-   {      
-      "poolName":"Zpool.ca",      
-      "url":"https://www.zpool.ca",      
-      "searchStrings":[         
-         "www.zpool.ca"      
-      ]   
+   {
+      "poolName":"Zpool.ca",
+      "url":"https://www.zpool.ca",
+      "searchStrings":[
+         "www.zpool.ca"
+      ]
    },
    {
       "poolName":"Coinmine.pl",
@@ -35,10 +35,10 @@
       ]
    },
    {
-      "poolName":"Cryptopia",      
-      "url":"https://www.cryptopia.co.nz/Mineshaft?pool=GRS&Algo=Groestl",      
-      "searchStrings":[         
-         "CryptopiaStratum"      
-      ]   
+      "poolName":"Cryptopia",
+      "url":"https://www.cryptopia.co.nz/Mineshaft?pool=GRS&Algo=Groestl",
+      "searchStrings":[
+         "CryptopiaStratum"
+      ]
    }
 ]
