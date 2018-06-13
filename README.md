@@ -1,36 +1,36 @@
 
-# *insight API*
+# *groestlsight API*
 
-*insight API* is an open-source bitcoin blockchain REST
-and websocket API. Insight API runs in NodeJS and uses LevelDB for storage.
+*groestlsight API* is an open-source groestlcoin blockchain REST
+and websocket API. Groestlsight API runs in NodeJS and uses LevelDB for storage.
 
 This is a backend-only service. If you're looking for the web frontend application,
-take a look at https://github.com/bitpay/insight.
+take a look at https://github.com/groestlcoin/insight.
 
-*Insight API* allows to develop bitcoin-related applications (such as wallets) that
-require certain information from the blockchain that bitcoind does not provide.
+*Groestlsight API* allows to develop groestlcoin-related applications (such as wallets) that
+require certain information from the blockchain that groestlcoind does not provide.
 
-A blockchain explorer front-end has been developed on top of *Insight API*. It can
-be downloaded at [Github Insight Repository](https://github.com/bitpay/insight).
+A blockchain explorer front-end has been developed on top of *Groestlsight API*. It can
+be downloaded at [Github Groestlsight Repository](https://github.com/groestlcoin/insight).
 
 ## Warning
-  Insight file sync does not work with **bitcoind**  v0.10 
-  In order to use Insigtht you must set the environment variable INSIGHT_FORCE_RPC_SYNC = 1  
-  We are working on `bitcore-node` to replace Insight-api. Check `bitcore-node` on  [github](https://github.com/bitpay/bitcore-node).
+  Insight file sync does not work with **groestlcoind**  v2.1.0.6 
+  In order to use Groestlsight you must set the environment variable INSIGHT_FORCE_RPC_SYNC = 1  
+  We are working on `groestlcore-node` to replace Groestlsight-api. Check `groestlcore-node` on  [github](https://github.com/groestlcoin/bitcore-node).
 
 ## Prerequisites
 
-* **bitcoind** - Download and Install [Bitcoin](http://bitcoin.org/en/download)
+* **groestlcoind** - Download and Install [Groestlcoin](https://groestlcoin.org/download)
 
-*insight API* needs a *trusted* bitcoind node to run. *insight API* will connect to the node
-through the RPC API, bitcoin peer-to-peer protocol, and will even read its raw block .dat files for syncing.
+*groestlsight API* needs a *trusted* groestlcoind node to run. *groestlsight API* will connect to the node
+through the RPC API, groestlcoin peer-to-peer protocol, and will even read its raw block .dat files for syncing.
 
-Configure bitcoind to listen to RPC calls and set `txindex` to true.
-The easiest way to do this is by copying `./etc/bitcoind/bitcoin.conf` to your
-bitcoin data directory (usually `~/.bitcoin` on Linux, `%appdata%\Bitcoin\` on Windows,
-or `~/Library/Application Support/Bitcoin` on Mac OS X).
+Configure groestlcoind to listen to RPC calls and set `txindex` to true.
+The easiest way to do this is by copying `./etc/groestlcoind/groestlcoin.conf` to your
+groestlcoin data directory (usually `~/.groestlcoin` on Linux, `%appdata%\Groestlcoin\` on Windows,
+or `~/Library/Application Support/Groestlcoin` on Mac OS X).
 
-bitcoind must be running and must have finished downloading the blockchain **before** running *insight API*.
+groestlcoind must be running and must have finished downloading the blockchain **before** running *groestlsight API*.
 
 
 * **Node.js v0.10.x** - Download and Install [Node.js](http://www.nodejs.org/download/).
@@ -43,7 +43,7 @@ bitcoind must be running and must have finished downloading the blockchain **bef
 
   To install Insight API, clone the main repository:
 
-    $ git clone https://github.com/bitpay/insight-api && cd insight-api
+    $ git clone https://github.com/groestlcoin/insight-api && cd insight-api
 
   Install dependencies:
 
@@ -67,15 +67,15 @@ bitcoind must be running and must have finished downloading the blockchain **bef
 All configuration is specified in the [config](config/) folder, particularly the [config.js](config/config.js) file. There you can specify your application name and database name. Certain configuration values are pulled from environment variables if they are defined:
 
 ```
-BITCOIND_HOST         # RPC bitcoind host
-BITCOIND_PORT         # RPC bitcoind Port
-BITCOIND_P2P_HOST     # P2P bitcoind Host (will default to BITCOIND_HOST, if specified)
-BITCOIND_P2P_PORT     # P2P bitcoind Port
+BITCOIND_HOST         # RPC groestlcoind host
+BITCOIND_PORT         # RPC groestlcoind Port
+BITCOIND_P2P_HOST     # P2P groestlcoind Host (will default to BITCOIND_HOST, if specified)
+BITCOIND_P2P_PORT     # P2P groestlcoind Port
 BITCOIND_USER         # RPC username
 BITCOIND_PASS         # RPC password
-BITCOIND_DATADIR      # bitcoind datadir. 'testnet3' will be appended automatically if testnet is used. NEED to finish with '/'. e.g: `/vol/data/`
+BITCOIND_DATADIR      # groestlcoind datadir. 'testnet3' will be appended automatically if testnet is used. NEED to finish with '/'. e.g: `/vol/data/`
 INSIGHT_NETWORK [= 'livenet' | 'testnet']
-INSIGHT_PORT          # insight api port
+INSIGHT_PORT          # groestlsight api port
 INSIGHT_DB            # Path where to store insight's internal DB. (defaults to $HOME/.insight)
 INSIGHT_SAFE_CONFIRMATIONS=6  # Nr. of confirmation needed to start caching transaction information
 INSIGHT_IGNORE_CACHE  # True to ignore cache of spents in transaction, with more than INSIGHT_SAFE_CONFIRMATIONS confirmations. This is useful for tracking double spents for old transactions.
@@ -84,37 +84,37 @@ ENABLE_RATELIMITER # if "true" will enable the ratelimiter plugin
 LOGGER_LEVEL # defaults to 'info', can be 'debug','verbose','error', etc.
 ENABLE_HTTPS # if "true" it will server using SSL/HTTPS
 ENABLE_EMAILSTORE # if "true" will enable a plugin to store data with a validated email address
-INSIGHT_EMAIL_CONFIRM_HOST # Only meanfull if ENABLE_EMAILSTORE is enable. Hostname for the confirm URLs. E.g: 'https://insight.bitpay.com'
+INSIGHT_EMAIL_CONFIRM_HOST # Only meanfull if ENABLE_EMAILSTORE is enable. Hostname for the confirm URLs. E.g: 'https://groestlsight.groestlcoin.org'
 
 ```
 
-Make sure that bitcoind is configured to [accept incoming connections using 'rpcallowip'](https://en.bitcoin.it/wiki/Running_Bitcoin).
+Make sure that groestlcoind is configured to [accept incoming connections using 'rpcallowip'](https://en.bitcoin.it/wiki/Running_Bitcoin).
 
 In case the network is changed (testnet to livenet or vice versa) levelDB database needs to be deleted. This can be performed running:
-```util/sync.js -D``` and waiting for *insight* to synchronize again.  Once the database is deleted, the sync.js process can be safely interrupted (CTRL+C) and continued from the synchronization process embedded in main app.
+```util/sync.js -D``` and waiting for *groestlsight* to synchronize again.  Once the database is deleted, the sync.js process can be safely interrupted (CTRL+C) and continued from the synchronization process embedded in main app.
 
 ## Synchronization
 
-The initial synchronization process scans the blockchain from the paired bitcoind server to update addresses and balances. *insight-api* needs exactly one trusted bitcoind node to run. This node must have finished downloading the blockchain before running *insight-api*.
+The initial synchronization process scans the blockchain from the paired groestlcoind server to update addresses and balances. *groestlsight-api* needs exactly one trusted groestlcoind node to run. This node must have finished downloading the blockchain before running *groestlsight-api*.
 
-While *insight* is synchronizing the website can be accessed (the sync process is embedded in the webserver), but there may be missing data or incorrect balances for addresses. The 'sync' status is shown at the `/api/sync` endpoint.
+While *groestlsight* is synchronizing the website can be accessed (the sync process is embedded in the webserver), but there may be missing data or incorrect balances for addresses. The 'sync' status is shown at the `/api/sync` endpoint.
 
-The blockchain can be read from bitcoind's raw `.dat` files or RPC interface.
+The blockchain can be read from groestlcoind's raw `.dat` files or RPC interface.
 Reading the information from the `.dat` files is much faster so it's the
 recommended (and default) alternative. `.dat` files are scanned in the default
-location for each platform (for example, `~/.bitcoin` on Linux). In case a
+location for each platform (for example, `~/.groestlcoin` on Linux). In case a
 non-standard location is used, it needs to be defined (see the Configuration section).
-As of June 2014, using `.dat` files the sync process takes 9 hrs.
+As of June 2018, using `.dat` files the sync process takes 3 hrs.
 for livenet and 30 mins. for testnet.
 
-While synchronizing the blockchain, *insight-api* listens for new blocks and
-transactions relayed by the bitcoind node. Those are also stored on *insight-api*'s database.
-In case *insight-api* is shutdown for a period of time, restarting it will trigger
+While synchronizing the blockchain, *groestlsight-api* listens for new blocks and
+transactions relayed by the groestlcoind node. Those are also stored on *groestlsight-api*'s database.
+In case *groestlsight-api* is shutdown for a period of time, restarting it will trigger
 a partial (historic) synchronization of the blockchain. Depending on the size of
 that synchronization task, a reverse RPC or forward `.dat` syncing strategy will be used.
 
-If bitcoind is shutdown, *insight-api* needs to be stopped and restarted
-once bitcoind is restarted.
+If groestlcoind is shutdown, *groestlsight-api* needs to be stopped and restarted
+once groestlcoind is restarted.
 
 ### Syncing old blockchain data manually
 
@@ -125,20 +125,20 @@ once bitcoind is restarted.
   Check util/sync.js --help for options, particulary -D to erase the current DB.
 
   *NOTE*: there is no need to run this manually since the historic synchronization
-  is built in into the web application. Running *insight-api* normally will trigger
+  is built in into the web application. Running *groestlsight-api* normally will trigger
   the historic sync automatically.
 
 
 ### DB storage requirement
 
-To store the blockchain and address related information, *insight-api* uses LevelDB.
+To store the blockchain and address related information, *groestlsight-api* uses LevelDB.
 Two DBs are created: txs and blocks. By default these are stored on
 
-  ``~/.insight/``
+  ``~/.groestlsight/``
 
-Please note that some older versions of Insight-API store that on `<insight's root>/db`.
+Please note that some older versions of Groestlsight-API store that on `<groestlsight's root>/db`.
 
-This can be changed at config/config.js. As of June 2014, storing the livenet blockchain takes ~35GB of disk space (2GB for the testnet).
+This can be changed at config/config.js. As of June 2018, storing the livenet blockchain takes ~2GB of disk space (500MB for the testnet).
 
 ## Development
 
@@ -151,7 +151,7 @@ To run the tests
 ```$ grunt test```
 
 
-Contributions and suggestions are welcome at [insight-api github repository](https://github.com/bitpay/insight-api).
+Contributions and suggestions are welcome at [groestlsight-api github repository](https://github.com/groestlcoin/insight-api).
 
 ## Caching schema
 
