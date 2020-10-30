@@ -23,9 +23,9 @@
     "email": "jungans@gmail.com"
   }],
   "bugs": {
-    "url": "https://github.com/bitpay/insight-api/issues"
+    "url": "https://github.com/groestlcoin/insight-api/issues"
   },
-  "homepage": "https://github.com/bitpay/insight-api",
+  "homepage": "https://github.com/groestlcoin/insight-api",
   "license": "MIT",
   "keywords": [
     "insight",
@@ -46,9 +46,9 @@
   "dependencies": {
     "async": "*",
     "base58-native": "0.1.2",
-    "bignum": "*",
+    "bignum": "0.13.0",
     "morgan": "*",
-    "bitcore": "git://github.com/GroestlCoin/groestlcore.git",
+    "bitcore": "git://github.com/Groestlcoin/groestlcore.git",
     "bufferput": "git://github.com/bitpay/node-bufferput.git",
     "buffertools": "*",
     "commander": "^2.3.0",
