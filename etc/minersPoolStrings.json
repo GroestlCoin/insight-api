@@ -1,9 +1,9 @@
 [
    {
-      "poolName":"DwarfPool",
-      "url":"http://dwarfpool.com/grs/",
+      "poolName":"MiningDutch",
+      "url":"https://www.mining-dutch.nl/",
       "searchStrings":[
-         "stratumPool"
+         "Mining-Dutch5"
       ]
    },
    {
@@ -28,17 +28,17 @@
       ]
    },
    {
-      "poolName":"Coinmine.pl",
-      "url":"https://www2.coinmine.pl/grs/",
+      "poolName":"Zergpool",
+      "url":"https://zergpool.com/",
       "searchStrings":[
-         "CoinMine"
+         "zergpool.com"
       ]
    },
    {
-      "poolName":"Cryptopia",
-      "url":"https://www.cryptopia.co.nz/Mineshaft?pool=GRS&Algo=Groestl",
+      "poolName":"Cybtc.info",
+      "url":"https://cybtc.info/",
       "searchStrings":[
-         "CryptopiaStratum"
+         "CybtcPool"
       ]
    }
 ]
